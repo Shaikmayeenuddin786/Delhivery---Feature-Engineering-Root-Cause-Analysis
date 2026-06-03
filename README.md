@@ -1,0 +1,137 @@
+# Delhivery - Feature Engineering Root Cause Analysis
+
+## Quick Section Summary
+
+| Section | Description |
+|---------|-------------|
+| **Why this Project** | Help Delhivery clean and process logistics data for forecasting models |
+| **Business Problem** | Raw data needs cleaning, feature extraction, and preparation for ML |
+| **Objectives** | Clean data, merge trip segments, create features, compare metrics, normalize |
+| **Structural Flowchart** | 10-step process from data loading to business insights |
+| **Technical Stack** | Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn |
+| **Repository Structure** | Jupyter notebook + CSV data + processed outputs |
+
+---
+
+## Why this Project
+
+Delhivery is India's largest integrated logistics player. Their data team needs to process raw pipeline data to build intelligence and forecasting models. This project cleans, sanitizes, and engineers features from raw logistics data to help data scientists build better models.
+
+---
+
+## Business Problem
+
+Delhivery wants to understand and process data from their engineering pipelines:
+- Clean and manipulate data to extract useful features from raw fields
+- Make sense of raw data to help the data science team build forecasting models
+
+**Key challenges:**
+- One delivery trip is split across multiple rows (like connecting flights)
+- Need to merge rows intelligently using aggregations
+- Compare actual times vs OSRM (routing engine) predictions
+- Handle missing values, outliers, and categorical variables
+
+---
+
+## Objectives
+
+| # | Objective | Status |
+|---|-----------|--------|
+| 1 | Define problem statement and perform EDA | ✅ |
+| 2 | Create new features (city, state, time parts) | ✅ |
+| 3 | Merge multiple rows per trip using groupby | ✅ |
+| 4 | Compare time and distance fields (actual vs OSRM) | ✅ |
+| 5 | Detect and cap outliers using IQR method | ✅ |
+| 6 | Handle missing values (median for numbers, mode for categories) | ✅ |
+| 7 | Analyze relationships between aggregated fields | ✅ |
+| 8 | Apply one-hot encoding to categorical variables | ✅ |
+| 9 | Normalize and standardize numerical features | ✅ |
+| 10 | Generate business insights and recommendations | ✅ |
+
+---
+
+## Structural Flowchart
+
+<img width="793" height="571" alt="image" src="https://github.com/user-attachments/assets/76ee09aa-1e34-4e5c-b076-04f172ce84b7" />
+
+---
+
+## Technical Stack
+
+| Tool | Purpose |
+|------|---------|
+| Python 3.11 | Core programming language |
+| Jupyter Notebook 7.2.2 | Interactive development environment |
+| Pandas 2.2.3 | Data manipulation and aggregation |
+| NumPy 2.2.5 | Numerical operations |
+| Matplotlib 3.10.1 | Data visualization |
+| Seaborn 0.13.2 | Statistical visualizations |
+| Scikit-learn 1.6.1 | Scaling, encoding, preprocessing |
+| SciPy 1.5.2 | Statistical tests (t-test) |
+
+---
+
+## Repository Structure
+
+delhivery-feature-engineering/
+
+<img width="1073" height="483" alt="image" src="https://github.com/user-attachments/assets/b1f1b96c-09cb-42b0-be3f-b1cf66d72749" />
+
+
+---
+
+## Key Results (True Values from Analysis)
+
+| Metric | Value |
+|--------|-------|
+| Total original rows (segments) | 144,867 |
+| Total unique trips (after merging) | 14,817 |
+| Features created | 28 |
+| Features after one-hot encoding | 17,805 |
+| Correlation (od_duration vs start_scan) | 0.7980 |
+| Mean time difference | -12,660 seconds (-211 minutes) |
+| Median time difference | -50 seconds (-0.8 minutes) |
+| Trips where actual > OSRM | 99.2% |
+| Data completeness after cleaning | 100% |
+
+---
+
+## Top 5 Business Insights
+
+1. **Extreme Outliers distort averages** - Mean difference is -211 minutes but median is only -0.8 minutes
+2. **Geographic concentration** - Haryana, Maharashtra, Karnataka account for 47.3% of deliveries
+3. **OSRM underestimates 99.2% of trips** - Real-world factors add 15-20% to travel time
+4. **Carting vs FTL are very different** - FTL is 50% faster but covers 12x longer distances
+5. **Strong correlation (0.798)** but systematic difference between time metrics
+
+---
+
+## Top 5 Recommendations
+
+| Priority | Recommendation | Expected Impact |
+|----------|---------------|-----------------|
+| 1 | Add 20% buffer to OSRM ETAs | Reduce missed promises by 80% |
+| 2 | Build real-time outlier detection | Catch severe delays early |
+| 3 | Optimize top 3 states | 10-15% faster delivery |
+| 4 | Separate models for Carting vs FTL | 15-20% better accuracy |
+| 5 | Standardize time definitions | Clearer KPIs |
+
+---
+
+## How to Run
+
+1. Clone this repository
+2. Install required libraries:
+   ```bash
+   pip install pandas numpy matplotlib seaborn scikit-learn scipy
+
+   [Delhivery_Feature Engineering.ipynb](https://github.com/user-attachments/files/28537543/Delhivery_Feature.Engineering.ipynb)
+
+---
+
+## 👤 Author
+
+**Shaik Mayeenuddin**
+
+Data Science & AI/ML Professional | Lean Six Sigma | Process & Revenue Optimization | 
+https://www.linkedin.com/in/shaikmayeenuddin
